@@ -1,5 +1,5 @@
 import '../../styles/components/card.scss'
-import Props from '../../constants/propsTypes'
+import { Props } from '../../constants/propsTypes'
 
 function Card({ children }: Props) {
   return (

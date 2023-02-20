@@ -1,5 +1,5 @@
 import '../../styles/components/container.scss'
-import Props from '../../constants/propsTypes'
+import { Props } from '../../constants/propsTypes'
 
 function Container({ children, type }: Props) {
   let dynamicClass: string = ''

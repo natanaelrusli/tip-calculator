@@ -13,6 +13,7 @@ function CalculatorForm({ children }: Props) {
 
   function handleBillChange(input: any) {
     setBill(input)
+    console.log(bill)
   }
 
   return (
@@ -21,7 +22,7 @@ function CalculatorForm({ children }: Props) {
         <p className='calculator_form__label'>Bill</p>
         <div className="input_group">
           <span className="prefix">$</span>
-          <input type="text" className='input' value={bill} onChange={(e) => handleBillChange(e.target.value) } />
+          <input type="number" className='input' value={bill} onChange={(e) => handleBillChange(e.target.value) } />
         </div>
 
         <p className='calculator_form__label'>Select Tip %</p>
