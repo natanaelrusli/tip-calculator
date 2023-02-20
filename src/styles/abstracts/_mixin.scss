@@ -1,0 +1,11 @@
+@mixin alignment($pos) {
+  @if $pos == 'left' {
+    align-items: start;
+    margin-left: 1rem;
+  } @else if $pos == 'center' {
+    align-items: center;
+  } @else if $pos == 'right' {
+    align-items: end;
+    margin-right: 1rem;
+  }
+}

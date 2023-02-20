@@ -1,0 +1,23 @@
+@use "src/styles/abstracts/mixin";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+}
+
+.center {
+  justify-content: center;
+  @include mixin.alignment('center');
+}
+
+.left {
+  justify-content: center;
+  @include mixin.alignment('left');
+}
+
+.right {
+  justify-content: center;
+  @include mixin.alignment('right');
+}

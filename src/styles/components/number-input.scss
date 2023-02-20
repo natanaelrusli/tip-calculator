@@ -1,0 +1,33 @@
+@use "src/styles/abstracts/colors";
+
+.number-input {
+  position: relative;
+  display: table;
+  border-collapse: separate;
+  margin-bottom: 20px;
+  width: 100%;
+
+  .input {
+    background-color: colors.$very-light-grayish-cyan;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 0px 3px 3px 0px;
+    font-weight: 800;
+    font-family: 'Space Mono', monospace;
+    position: relative;
+    float: left;
+    display: table-cell;
+    text-align: end;
+  }
+
+  .prefix {
+    position: absolute;
+    left: 0;
+    background-color: colors.$very-light-grayish-cyan;
+    padding: 0.5rem;
+    border-radius: 3px 0px 0px 3px;
+    z-index: 99;
+  }
+}

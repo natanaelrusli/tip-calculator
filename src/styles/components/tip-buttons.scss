@@ -1,0 +1,48 @@
+@use "src/styles/abstracts/colors";
+
+.tip-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 31% [col-start]);
+  grid-template-rows: repeat(2, 35px);
+  row-gap: 0.5rem;
+  column-gap: 10px;
+  margin-bottom: 20px;
+
+  .button {
+    height: 100%;
+    background-color: colors.$very-dark-cyan;
+    color: colors.$white;
+    padding: 0.5rem;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    font-weight: 800;
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .button:hover {
+    background-color: colors.$strong-cyan;
+  }
+
+  .selected {
+    background-color: colors.$strong-cyan;
+    color: colors.$very-dark-cyan;
+  }
+
+  .input {
+    background-color: colors.$very-light-grayish-cyan;
+    border: none;
+    outline: none;
+    padding: 0.5rem;
+    border-radius: 3px;
+    font-weight: 800;
+    font-family: 'Space Mono', monospace;
+    display: table-cell;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: colors.$very-dark-cyan;
+  }
+}
