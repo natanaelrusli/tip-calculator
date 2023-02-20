@@ -15,4 +15,13 @@
   background-color: colors.$light-grayish-cyan;
   height: 100vh;
   width: 100vw;
+
+  &__title {
+    color: colors.$very-dark-cyan;
+    margin-bottom: 1rem;
+    
+    p {
+      letter-spacing: 0.7rem;
+    }
+  }
 }

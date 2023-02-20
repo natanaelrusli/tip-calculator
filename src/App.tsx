@@ -7,8 +7,10 @@ function App() {
   return (
     <div className="app">
       <Container type='center'>
-        <p>SPLI</p>
-        <p>TTER</p>
+        <div className='app__title'>
+          <p>SPLI</p>
+          <p>TTER</p>
+        </div>
         <Card>
           <CalculatorForm />
         </Card>
