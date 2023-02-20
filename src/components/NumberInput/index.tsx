@@ -1,12 +1,11 @@
 import '../../styles/components/number-input.scss'
 import Props from './propTypes'
-import IconPerson from '../../assets/images/icon-person.svg'
 
-function NumberInput({prefix}:Props) {
+function NumberInput({prefix, handleChange, value}:Props) {
   return (
     <div className='number-input'>
-      <img src={IconPerson} alt="" className='prefix' />
-      <input type="text" className='input' />
+      <img src={prefix} alt="" className='prefix' />
+      <input type="text" className='input' value={value} onChange={(e) => handleChange(e.target.value)} />
     </div>
   )
 }

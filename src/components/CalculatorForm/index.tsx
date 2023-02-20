@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from 'react'
+import { SetStateAction, useEffect, useState } from 'react'
 import { Props } from '../../constants/propsTypes'
 import '../../styles/components/calculator-form.scss'
 // import { thousandSeparator, removeCommas } from '../../utils/thousandSeparator'
@@ -9,12 +9,29 @@ import OutputField from '../OutputField'
 
 function CalculatorForm({ children }: Props) {
   const [bill, setBill] = useState(0)
+  const [people, setPeople] = useState(0)
+  const [percentage, setPercentage] = useState(0)
   const tipPercentages = [5, 10, 15, 25, 50]
 
   function handleBillChange(input: any) {
     setBill(input)
-    console.log(bill)
   }
+
+  function handleNumOfPeople(input: number) {
+    setPeople(input)
+  }
+
+  function handlePercentageChange(input: number) {
+    setPercentage(input)
+  }
+
+  function calculateTip(bill: number, people: number, percentage: number) {
+    console.log(bill, people, percentage)
+  }
+
+  useEffect(() => {
+    calculateTip(bill, people, percentage)
+  },[bill, people, percentage])
 
   return (
     <div className="calculator_form">
@@ -29,7 +46,7 @@ function CalculatorForm({ children }: Props) {
         <TipButtons items={tipPercentages} />
 
         <p className='calculator_form__label'>Number of People</p>
-        <NumberInput prefix={IconPerson}/>
+        <NumberInput prefix={IconPerson} handleChange={handleNumOfPeople} value={people} />
       </div>
       <div className="calculator_form__right">
         <OutputField />

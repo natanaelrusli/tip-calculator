@@ -1,5 +1,7 @@
-type Props = {
-  prefix: number | string | SVGElement
+interface Props {
+  prefix: string,
+  handleChange: Function,
+  value: number
 }
 
 export default Props
