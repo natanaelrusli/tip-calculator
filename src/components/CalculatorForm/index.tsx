@@ -58,6 +58,21 @@ function CalculatorForm() {
     )
   }
 
+  function resetForm() {
+    setFormData({
+      ...formData,
+      bill: 0,
+      percentage: 0,
+      people: 0
+    })
+
+    setResult({
+      ...result,
+      tip: 0,
+      total: 0
+    })
+  }
+
   function calculateTip(bill: number, people: number, percentage: number) {
     let tip: number = (bill * (percentage / 100)) / people
     let total: number = (bill + tip) / people
@@ -90,7 +105,7 @@ function CalculatorForm() {
         <NumberInput prefix={IconPerson} handleChange={handleNumOfPeople} value={formData.people || ''} />
       </div>
       <div className="calculator_form__right">
-        <OutputField total={result.total} tip={result.tip} />
+        <OutputField handleReset={resetForm} total={result.total} tip={result.tip} />
       </div>
     </div>
   )

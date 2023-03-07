@@ -3,7 +3,7 @@ import SPButton from '../SPButton'
 import OutputLabel from './OutputLabel'
 import Props from './propTypes'
 
-function OutputField({total, tip}: Props) {
+function OutputField({total, tip, handleReset}: Props) {
   return (
     <div className='output-field'>
       <div className='output-field__top'>
@@ -12,7 +12,7 @@ function OutputField({total, tip}: Props) {
       </div>
 
       <div className='output-field__bottom'>
-        <SPButton text='RESET'/>
+        <SPButton text='RESET' handleClick={handleReset}/>
       </div>
     </div>
   )
