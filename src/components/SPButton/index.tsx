@@ -1,9 +1,10 @@
 import '../../styles/components/sp-button.scss'
+import Props from './propTypes'
 
-function SPButton() {
+function SPButton({ text }: Props) {
   return (
     <div className='sp-button'>
-      RESET
+      { text }
     </div>
   )
 }

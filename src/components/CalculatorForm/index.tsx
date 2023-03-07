@@ -1,37 +1,78 @@
-import { SetStateAction, useEffect, useState } from 'react'
-import { Props } from '../../constants/propsTypes'
+import { useEffect, useState } from 'react'
 import '../../styles/components/calculator-form.scss'
-// import { thousandSeparator, removeCommas } from '../../utils/thousandSeparator'
+
 import NumberInput from '../NumberInput'
 import TipButtons from './TipButtons'
 import IconPerson from '../../assets/images/icon-person.svg'
 import OutputField from '../OutputField'
 
-function CalculatorForm({ children }: Props) {
-  const [bill, setBill] = useState(0)
-  const [people, setPeople] = useState(0)
-  const [percentage, setPercentage] = useState(0)
+interface FormData {
+  bill: number
+  percentage: number
+  people: number
+}
+
+interface ResultData {
+  tip: number
+  total: number
+}
+
+function CalculatorForm() {
   const tipPercentages = [5, 10, 15, 25, 50]
 
-  function handleBillChange(input: any) {
-    setBill(input)
+  const [formData, setFormData] = useState<FormData>({
+    bill: 0,
+    percentage: 0,
+    people: 0
+  })
+
+  const [result, setResult] = useState<ResultData>({
+    tip: 0,
+    total: 0
+  })
+
+  function handleBillChange(e: number) {
+    setFormData(
+      {
+        ...formData,
+        bill: e
+      }
+    )
   }
 
-  function handleNumOfPeople(input: number) {
-    setPeople(input)
+  function handleNumOfPeople(e: number) {
+    setFormData(
+      {
+        ...formData,
+        people: e
+      }
+    )
   }
 
   function handlePercentageChange(input: number) {
-    setPercentage(input)
+    setFormData(
+      {
+        ...formData,
+        percentage: input
+      }
+    )
   }
 
   function calculateTip(bill: number, people: number, percentage: number) {
-    console.log(bill, people, percentage)
+    let tip: number = (bill * (percentage / 100)) / people
+    let total: number = (bill + tip) / people
+    setResult({
+      ...result,
+      tip: tip,
+      total: total
+    })
   }
 
   useEffect(() => {
-    calculateTip(bill, people, percentage)
-  },[bill, people, percentage])
+    if (formData.bill && formData.people && formData.percentage) {
+      calculateTip(Number(formData.bill), Number(formData.people), formData.percentage)
+    }
+  },[formData])
 
   return (
     <div className="calculator_form">
@@ -39,17 +80,17 @@ function CalculatorForm({ children }: Props) {
         <p className='calculator_form__label'>Bill</p>
         <div className="input_group">
           <span className="prefix">$</span>
-          <input type="number" className='input' value={bill} onChange={(e) => handleBillChange(e.target.value) } />
+          <input type="number" className='input' value={formData.bill || ''} onChange={(e) => handleBillChange(Number(e.target.value)) } />
         </div>
 
         <p className='calculator_form__label'>Select Tip %</p>
-        <TipButtons items={tipPercentages} />
+        <TipButtons items={tipPercentages} handleChange={handlePercentageChange} />
 
         <p className='calculator_form__label'>Number of People</p>
-        <NumberInput prefix={IconPerson} handleChange={handleNumOfPeople} value={people} />
+        <NumberInput prefix={IconPerson} handleChange={handleNumOfPeople} value={formData.people || ''} />
       </div>
       <div className="calculator_form__right">
-        <OutputField />
+        <OutputField total={result.total} tip={result.tip} />
       </div>
     </div>
   )
